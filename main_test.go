@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestCafeNegative(t *testing.T) {
@@ -75,7 +76,7 @@ func TestCafeCount(t *testing.T) {
 		handler.ServeHTTP(rec, req)
 
 		// Проверка ответа
-		assert.Equal(t, http.StatusOK, rec.Code)
+		require.Equal(t, http.StatusOK, rec.Code)
 
 		// Удаляем пробелы и перенос строки
 		body := strings.TrimSpace(rec.Body.String())
@@ -118,7 +119,7 @@ func TestCafeSearch(t *testing.T) {
 		handler.ServeHTTP(rec, req)
 
 		// Проверка кода ответа
-		assert.Equal(t, http.StatusOK, rec.Code)
+		require.Equal(t, http.StatusOK, rec.Code)
 
 		// Чистим тело ответа от лишних символов
 		body := strings.TrimSpace(rec.Body.String())
